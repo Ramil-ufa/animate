@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Анимированная сортировка</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="js/range.js"></script>
+	<script src="js/script.js" defer></script>
+</head>
+	<body>
+		<div class="wrapper">
+			<div class="form">
+				<div class="form-switch">
+					<button class="btn form-switch__handle form-switch__active" data-switch="1" data-content="Ручной ввод"></button>
+					<button class="btn form-switch__random" data-switch="2" data-content="Рандомный набор"></button>
+				</div>
+				<div class="form-container">
+					<span class="form-container__title" title="Введите числа для сортировки">Введите числа через запятую</span>
+					<div class="numbers">
+						<input class="numbers__input" type="text">
+						<button class="btn numbers__reset" title="Очистить">x</button>
+					</div>
+					<div class="random" style="">
+						<button class="btn random__title random__title_filter" data-active="hidden">Открыть фильтры</button>
+						<div class="filter">
+							<div class="filter__sign">
+								<div class="filter__block radio">
+									<input class="radio__input" type="radio" name="sign" id="radioSignAll" value="1" checked>
+									<label class="radio__label" for="radioSignAll">Все числа</label>	
+								</div>
+								<div class="filter__block radio">
+									<input class="radio__input" type="radio" name="sign" id="radioSignMinus" value="2">
+									<label class="radio__label" for="radioSignMinus">Только отрицательные</label>	
+								</div>
+								<div class="filter__block radio">
+									<input class="radio__input" type="radio" name="sign" id="radioSignPlus" value="3">
+									<label class="radio__label" for="radioSignPlus">Только положительные</label>	
+								</div>
+							</div>
+							<div class="filter__range range">
+								<span class="range__title">Минимальное число:</span>
+								<div class="range__line">
+									<div class="range__item" data-step="1" data-min="-1000" data-max="0"></div>
+									<div class="range__result">-1000</div>
+								</div>
+								<input class="range__number" value="-1000" type="text">
+							</div>
+							<div class="filter__range range">
+								<span class="range__title">Максимальное число:</span>
+								<div class="range__line">
+									<div class="range__item range__item_end" data-val="1000" data-step="1" data-min="0" data-max="1000"></div>
+									<div class="range__result">1000</div>
+								</div>
+								<input class="range__number" value="1000" type="text">
+							</div>
+							<div class="filter__range range">
+								<span class="range__title">Количество цифр:</span>
+								<div class="range__line">
+									<div class="range__item range__item_end" data-step="1" data-min="2" data-max="20"></div>
+									<div class="range__result">20</div>
+								</div>
+								<input class="range__number" value="20" type="text">
+							</div>
+						</div>
+						<div class="random__generate">
+							<button class="btn random__generate_button">Сгенерировать</button>
+						</div>
+					</div>
+					<span class="form-container__title" title="Выберите метод сортировки">Выберите метод сортировки</span>
+					<div class="radio">
+						<input class="radio__input" type="radio" name="method" id="radioMethodBubble" value="1">
+						<label class="radio__label" for="radioMethodBubble">Метод пузырька</label>	
+					</div>
+					<div class="radio">
+						<input class="radio__input" type="radio" name="method" id="radioSignPlusTree" value="2">
+						<label class="radio__label" for="radioSignPlusTree">Дерево</label>	
+					</div>
+					<button class="btn form__send">Анимировать</button>
+				</div>	
+			</div>
+		</div>		
+	</body>
+</html>
+
