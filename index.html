@@ -19,24 +19,24 @@
 				<div class="form-container">
 					<span class="form-container__title" title="Введите числа для сортировки">Введите числа через запятую</span>
 					<div class="numbers">
-						<input class="numbers__input" type="text">
+						<input class="numbers__input" type="text" value="-9,10,-3,-7,4,8,5,10,-7,-5">
 						<button class="btn numbers__reset" title="Очистить">x</button>
 					</div>
-					<div class="random" style="">
+					<div class="random">
 						<button class="btn random__title random__title_filter" data-active="hidden">Открыть фильтры</button>
 						<div class="filter">
 							<div class="filter__sign">
-								<div class="filter__block radio">
+								<div class="radio">
 									<input class="radio__input" type="radio" name="sign" id="radioSignAll" value="1" checked>
 									<label class="radio__label" for="radioSignAll">Все числа</label>	
 								</div>
-								<div class="filter__block radio">
+								<div class="radio">
 									<input class="radio__input" type="radio" name="sign" id="radioSignMinus" value="2">
 									<label class="radio__label" for="radioSignMinus">Только отрицательные</label>	
 								</div>
-								<div class="filter__block radio">
+								<div class="radio">
 									<input class="radio__input" type="radio" name="sign" id="radioSignPlus" value="3">
-									<label class="radio__label" for="radioSignPlus">Только положительные</label>	
+									<label class="radio__label" for="radioSignPlus">Только положительные</label>
 								</div>
 							</div>
 							<div class="filter__range range">
@@ -69,18 +69,32 @@
 						</div>
 					</div>
 					<span class="form-container__title" title="Выберите метод сортировки">Выберите метод сортировки</span>
-					<div class="radio">
+					<div class="form-container_method radio">
 						<input class="radio__input" type="radio" name="method" id="radioMethodBubble" value="1">
-						<label class="radio__label" for="radioMethodBubble">Метод пузырька</label>	
+						<label class="radio__label" for="radioMethodBubble">Метод пузырька</label>
 					</div>
-					<div class="radio">
+					<div class="form-container__design design">
+						<span class="design__title">Дизайн:</span>
+						<div class="design__radio raido">
+							<input class="design__radio_input radio__input" type="radio" name="design" id="radioDesignBooks" value="1" checked>
+							<label class="design__radio_label radio__label" for="radioDesignBooks">Книги</label>
+						</div>
+						<div class="design__radio radio">
+							<input class="design__radio_input radio__input" type="radio" name="design" id="radioDesignDiagram" value="2">
+							<label class="design__radio_label radio__label" for="radioDesignDiagram">Диаграмма</label>
+						</div>
+					</div>
+					<div class="form-container_method radio">
 						<input class="radio__input" type="radio" name="method" id="radioSignPlusTree" value="2">
 						<label class="radio__label" for="radioSignPlusTree">Дерево</label>	
 					</div>
 					<button class="btn form__send">Анимировать</button>
 				</div>	
 			</div>
-		</div>		
+		</div>
 	</body>
 </html>
 
+			
+
+			
