@@ -5,13 +5,14 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Анимированная сортировка</title>
-	<link rel="stylesheet" href="css/style.css">
-	<script src="js/range.js"></script>
-	<script src="js/script.js" defer></script>
+	<link rel="stylesheet" href="css/style.min.css">
+	<script src="js/range.min.js"></script>
+	<script src="js/script.min.js" defer></script>
 </head>
 	<body>
 		<div class="wrapper">
 			<div class="form">
+				<button class="btn form__instruction">Прочесть инструкцию</button>
 				<div class="form-switch">
 					<button class="btn form-switch__handle form-switch__active" data-switch="1" data-content="Ручной ввод"></button>
 					<button class="btn form-switch__random" data-switch="2" data-content="Рандомный набор"></button>
@@ -19,7 +20,7 @@
 				<div class="form-container">
 					<span class="form-container__title" title="Введите числа для сортировки">Введите числа через запятую</span>
 					<div class="numbers">
-						<input class="numbers__input" type="text" value="-9,10,-3,-7,4,8,5,10,-7,-5">
+						<input class="numbers__input" type="text">
 						<button class="btn numbers__reset" title="Очистить">x</button>
 					</div>
 					<div class="random">
@@ -71,7 +72,7 @@
 					<span class="form-container__title" title="Выберите метод сортировки">Выберите метод сортировки</span>
 					<div class="form-container_method radio">
 						<input class="radio__input" type="radio" name="method" id="radioMethodBubble" value="1">
-						<label class="radio__label" for="radioMethodBubble">Метод пузырька</label>
+						<label class="radio__label" for="radioMethodBubble">Сортировка пузырьком</label>
 					</div>
 					<div class="form-container__design design">
 						<span class="design__title">Дизайн:</span>
@@ -86,15 +87,13 @@
 					</div>
 					<div class="form-container_method radio">
 						<input class="radio__input" type="radio" name="method" id="radioSignPlusTree" value="2">
-						<label class="radio__label" for="radioSignPlusTree">Дерево</label>	
+						<label class="radio__label" for="radioSignPlusTree">Сортировка бинарным деревом</label>	
 					</div>
 					<button class="btn form__send">Анимировать</button>
 				</div>	
 			</div>
 		</div>
 	</body>
-</html>
-
-			
+</html>			
 
 			
