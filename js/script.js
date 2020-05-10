@@ -33,6 +33,7 @@ startApp();
 //radioFilter - отрицательный/положительные числа, radioMethod - пузырька/дерево, generate - кнопка генерации чисел, 
 //startSorting - кнопка запуска сортировки
 function startApp(){
+	addEvent('.form__instruction', 'click', createModal);
 	addEvent('.form-switch button', 'click', switchSet);
 	addEvent('.random .random__title_filter', 'click', filter);
 	addEvent('.numbers__input', 'input', validNumbers);
@@ -44,6 +45,7 @@ function startApp(){
 	addEvent('.random .random__generate_button', 'click', generate);
 	addEvent('.form__send', 'click', startSorting);
 }
+
 
 
 //Переключает между ручным и рандомным вводом
@@ -846,4 +848,69 @@ function orderAnimateTime(container, treeEnd){
 			orderAnimateTime(container, treeEnd);
 		}
 	}, timer);
+}
+
+//Создает модальное окно инструкции
+function createModal(){
+	let modal = document.createElement('div');
+	modal.className = 'modal';
+	modal.innerHTML = ` 
+      <button class="modal__close">
+      	<svg class="modal__close_icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"><g><line class="cls-1" x1="7" x2="25" y1="7" y2="25"/><line class="cls-1" x1="7" x2="25" y1="25" y2="7"/></g></svg>
+      </button>
+      <div class="modal-content">
+       	<div class="instruction">
+       		<div class="instruction__header">Сортировка чисел</div>
+       		<div class="instruction__text">Числа можно задать двумя вариантами <span class="instruction_uppercase">рандомно</span> и <span class="instruction_uppercase">вручную</span>.</div>
+       		<div class="instruction__text">Если вы выбрали ВРУЧНУЮ: введите числа от -1000 до 1000 через запятую без пробелов. Максимальное количество чисел 20. Можно очистить поле ввода.
+   			Если вы выбрали РАНДОМНО, то числа сгенерируются от -1000 до 1000.</div>
+   			<div class="instruction__text"></div>
+
+   			<ol class="instruction__ol">
+   				<span class="instruction__ol_title">Если вы выбрали РАНДОМНО, то числа сгенерируются от -1000 до 1000. Можно настроить фильтры:</span> 
+               <li class="instruction__li">Все числа</li>
+               <li class="instruction__li">Только отрицательные</li>
+               <li class="instruction__li">Только положительные</li>
+             </ol>
+             <div class="instruction__text">Также можно задавать количество чисел, максимально 20.
+   			Представлены два метода анимации сортировки</div>
+   			<ol class="instruction__ol">
+   				<span class="instruction__ol_title">Представлены два метода анимации сортировки:</span> 
+               <li class="instruction__li">
+               	<span class="instruction__li_title">Сортировка пузырьком</span>
+               	<span class="instruction__li_text">Алгоритм состоит из повторяющихся проходов по сортируемому массиву. За каждый проход элементы последовательно сравниваются попарно и, если порядок в паре неверный, выполняется обмен элементов. Проходы по массиву повторяются N-1 раз или до тех пор, пока на очередном проходе не окажется, что обмены больше не нужны, что означает — массив отсортирован. При каждом проходе алгоритма по внутреннему циклу, очередной наибольший элемент массива ставится на своё место в конце массива рядом с предыдущим «наибольшим элементом», а наименьший элемент перемещается на одну позицию к началу массива («всплывает» до нужной позиции, как пузырёк в воде — отсюда и название алгоритма).</span>
+            	</li>
+               <li class="instruction__li">
+               	<span class="instruction__li_title">Сортировка бинарным деревом</span>
+               	<span class="instruction__li_text">Универсальный алгоритм сортировки, заключающийся в построении двоичного дерева поиска по ключам массива (списка), с последующей сборкой результирующего массива путём обхода узлов построенного дерева в необходимом порядке следования ключей. Данная сортировка является оптимальной при получении данных путём непосредственного чтения из потока (например, файла, сокета или консоли).</span>
+               	<div class="instruction__imgContainer">
+               		<img class="instruction__img" src="img/binary_search.png" alt="Пример двоичного дерева">
+               	</div>
+               </li>	
+               
+            </ol>
+            <div class="instruction__text">Время шага по умолчанию 2 секунды. Во время сортировки время задержки можно уменьшить или увеличить. Минимальная задержка 500 мс. Максимальная – 16 с. Сортировку можно <span class="instruction_uppercase">остановить</span> и <span class="instruction_uppercase">продолжить</span>. Закончить сортировку можно досрочно и выйти на главный экран.</div>
+            <div class="instruction__text">После сортировки можно <span class="instruction_uppercase">повторить</span> сортировку с данными числами или <span class="instruction_uppercase">выйти</span> на данный экран.</div>
+            <div class="instruction__text">После сортировки бинарным деревом, если узлы налезают друг на друга можно увеличить масштаб экрана или уменьшить. При этом если нажать на кнопку <span class="instruction_uppercase">повторить</span>, масштаб экрана сохраняется. Масштаб экрана уменьшается/увеличивается на 500 пикселей.</div>
+       	</div>
+      </div>
+	`;
+	document.querySelector('body').append(modal);
+	let html = document.getElementsByTagName('html')[0],
+ 		 WidthBefore = html.clientWidth;
+ 	html.classList.add('html_overflow');
+ 	let WidthAfter = html.clientWidth;
+ 	html.style.marginRight = `${WidthAfter-WidthBefore}px`;
+ 	addEvent('.modal', 'click', removeModal);
+}
+
+//Удаляет модальное окно
+function removeModal(event){
+	if (event.target.classList.contains('modal') || event.target.closest('.modal__close')) {
+		removeEvent('.modal', 'click', removeModal);
+		let html = document.getElementsByTagName('html')[0];
+	   html.classList.remove('html_overflow');
+	   html.style.marginRight = '0px'; 	
+	   document.querySelector('.modal').remove();
+	}
 }
